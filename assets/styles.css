@@ -1,0 +1,38 @@
+/* BeetLog LP — shared styles
+ * Tailwind CDN を補完するための共通スタイル。
+ * Claude Design からのデザイン受領後、ここを差し替える想定。
+ */
+
+:root {
+  --beetlog-bg: #fafaf9;
+  --beetlog-ink: #1c1917;
+  --beetlog-accent: #92400e; /* amber-800 */
+  --beetlog-accent-strong: #78350f; /* amber-900 */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", "Yu Gothic UI", "Yu Gothic", Meiryo, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* details summary chevron */
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+details > summary::after {
+  content: "+";
+  float: right;
+  font-weight: 700;
+  color: var(--beetlog-accent);
+}
+details[open] > summary::after {
+  content: "−";
+}
