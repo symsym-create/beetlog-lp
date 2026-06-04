@@ -1,430 +1,832 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BeetLog — カブト・クワガタのための飼育記録アプリ</title>
-  <meta name="description" content="BeetLogは、カブトムシ・クワガタムシのブリーダーのための飼育記録・販売管理アプリです。個体管理、産卵セット、幼虫ロット、温度管理、譲渡QR、販売札まで。" />
-
-  <!-- OGP -->
-  <meta property="og:title" content="BeetLog — カブト・クワガタのための飼育記録アプリ" />
-  <meta property="og:description" content="個体・産卵セット・幼虫ロットを一元管理。譲渡QRや販売札もアプリ一つで。" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://beetlog.app/" />
-  <meta property="og:image" content="https://beetlog.app/assets/ogp.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@beetlog_app" />
-  <meta name="twitter:creator" content="@beetlog_app" />
-
-  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="/assets/styles.css" />
-  <style>
-    /* スクロールイン用 */
-    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    /* スムーススクロール */
-    html { scroll-behavior: smooth; }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>BeetLog — カブト・クワガタのための飼育記録アプリ</title>
+<meta name="description" content="BeetLogは、カブトムシ・クワガタムシのブリーダーのための飼育記録・販売管理アプリです。個体管理、産卵セット、幼虫ロット、温度管理、譲渡QR、販売札まで。" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700;900&family=Shippori+Mincho+B1:wght@600;700&family=Lora:wght@500;600;700&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
 </head>
-<body class="bg-stone-50 text-stone-800 antialiased">
+<body>
 
-  <!-- Header -->
-  <header class="sticky top-0 z-40 bg-stone-50/90 backdrop-blur border-b border-stone-200">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2">
-        <img src="/assets/logo.svg" alt="BeetLog" class="h-8 w-8" onerror="this.style.display='none'" />
-        <span class="font-bold text-lg tracking-tight">BeetLog</span>
-      </a>
-      <nav class="hidden md:flex items-center gap-6 text-sm">
-        <a href="#why" class="hover:text-amber-700">特徴</a>
-        <a href="#features" class="hover:text-amber-700">機能</a>
-        <a href="#how" class="hover:text-amber-700">使い方</a>
-        <a href="#pricing" class="hover:text-amber-700">料金</a>
-        <a href="#faq" class="hover:text-amber-700">FAQ</a>
-        <a href="/support.html" class="hover:text-amber-700">サポート</a>
-      </nav>
-      <a href="https://x.com/beetlog_app" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full bg-amber-800 text-white px-4 py-2 text-sm font-medium hover:bg-amber-900 transition">
-        <svg viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="currentColor" aria-hidden="true">
-          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+<!-- ========== NAV ========== -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top" aria-label="BeetLog">
+      <img class="brand-mark brand-mark--img" src="assets/app-icon.png" alt="" width="30" height="30" />
+      <span class="brand-text">
+        <span class="brand-name">BeetLog</span>
+        <span class="brand-by">by Breeders Innovation</span>
+      </span>
+    </a>
+    <nav class="nav-links">
+      <a href="#why">特徴</a>
+      <a href="#features">機能</a>
+      <a href="#how">使い方</a>
+      <a href="#pricing">料金</a>
+      <a href="#faq">FAQ</a>
+      <a href="support.html">サポート</a>
+    </nav>
+    <a class="nav-cta" href="https://x.com/beetlog_app" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M18.244 2H21l-6.52 7.45L22.5 22H16l-4.95-6.475L5.3 22H2.5l7-8L1.5 2h6.65l4.5 5.94L18.244 2Zm-1.14 18h1.65L7.05 4H5.3l11.804 16Z"/></svg>
+      最新情報
+    </a>
+  </div>
+</header>
+
+<!-- ========== HERO ========== -->
+<section id="top" class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-grain"></div>
+    <svg class="hero-orbit" viewBox="0 0 800 800" preserveAspectRatio="none">
+      <circle cx="400" cy="400" r="320" fill="none" stroke="currentColor" stroke-width="0.5" opacity=".18"/>
+      <circle cx="400" cy="400" r="220" fill="none" stroke="currentColor" stroke-width="0.5" opacity=".12"/>
+      <circle cx="400" cy="400" r="120" fill="none" stroke="currentColor" stroke-width="0.5" opacity=".08"/>
+    </svg>
+  </div>
+
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        All-in-One Breeding App
+      </div>
+      <h1 class="hero-title">
+        飼育の記録と、<em>いつも一緒に</em>。
+      </h1>
+      <p class="hero-lede">
+        記録・管理・分析を、スマホ一つで。<br/>
+        個体管理から産卵セット、幼虫ロット、譲渡QR、販売札まで。
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#features">
+          機能を見る
+          <svg viewBox="0 0 20 20" width="14" height="14"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M4 10h12M11 5l5 5-5 5"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="https://x.com/beetlog_app" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="13" height="13"><path fill="currentColor" d="M18.244 2H21l-6.52 7.45L22.5 22H16l-4.95-6.475L5.3 22H2.5l7-8L1.5 2h6.65l4.5 5.94L18.244 2Zm-1.14 18h1.65L7.05 4H5.3l11.804 16Z"/></svg>
+          最新情報を見る
+        </a>
+      </div>
+      <div class="hero-meta">
+        <div class="meta-cell">
+          <div class="meta-k">対応</div>
+          <div class="meta-v">iOS 16+ / Android 10+</div>
+        </div>
+        <div class="meta-cell">
+          <div class="meta-k">公開</div>
+          <div class="meta-v">App Store / Google Play 順次</div>
+        </div>
+        <div class="meta-cell">
+          <div class="meta-k">料金</div>
+          <div class="meta-v">Free + Premium（ローンチ期間 全機能無料）</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-stage">
+      <div class="hero-phone" data-phone="home">
+        <!-- mock injected by script -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== WHY ========== -->
+<section id="why" class="why">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">Why BeetLog</div>
+      <h2 class="section-title">スプレッドシートや紙のノートに、<br/>もう戻れません。</h2>
+      <p class="section-lede">記録の手間を最小化し、データを世代を超えて活かす。それが BeetLog の役割です。</p>
+    </div>
+
+    <div class="why-grid">
+      <article class="why-card">
+        <div class="why-head">
+          <div class="why-num">01</div>
+          <div class="why-label">紙のノート</div>
+        </div>
+        <h3>追えない、渡せない。</h3>
+        <ul class="why-list why-list--neg">
+          <li>写真と記録が結びつかない</li>
+          <li>累代を遡るのに時間がかかる</li>
+          <li>譲渡時に情報を渡せない</li>
+        </ul>
+      </article>
+
+      <article class="why-card">
+        <div class="why-head">
+          <div class="why-num">02</div>
+          <div class="why-label">表計算ソフト</div>
+        </div>
+        <h3>設計に、時間がかかる。</h3>
+        <ul class="why-list why-list--neg">
+          <li>セル設計と入力規則に時間を取られる</li>
+          <li>スマホで開くたびに崩れる</li>
+          <li>写真や履歴を一元化できない</li>
+        </ul>
+      </article>
+
+      <article class="why-card why-card--solo">
+        <div class="why-head">
+          <div class="why-num">→</div>
+          <div class="why-label">BeetLog</div>
+        </div>
+        <h3>ブリーダー専用に、つくりました。</h3>
+        <ul class="why-list why-list--pos">
+          <li>入力は最短数タップ、写真も同時に</li>
+          <li>個体・血統・産卵セット・幼虫を一元管理</li>
+          <li>QR で譲渡、販売札もアプリ内で作成</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SPOTLIGHT: QR LABEL ========== -->
+<section id="label-spotlight" class="spotlight">
+  <div class="spotlight-bg" aria-hidden="true"></div>
+  <div class="container spotlight-inner">
+    <div class="spotlight-stage" aria-hidden="true">
+      <!-- printed QR management label -->
+      <div class="qr-tag">
+        <div class="qr-tag-top">
+          <span class="qr-tag-brand">BeetLog</span>
+          <span class="qr-tag-kind">管理ラベル</span>
+        </div>
+        <div class="qr-tag-main">
+          <div class="qr-tag-qr">
+              <svg viewBox="0 0 25 25" preserveAspectRatio="none">
+                <rect width="25" height="25" fill="#fff"/>
+                <g fill="#2B1A0F">
+                  <rect x="0" y="0" width="7" height="7"/><rect x="1" y="1" width="5" height="5" fill="#fff"/><rect x="2" y="2" width="3" height="3"/>
+                  <rect x="18" y="0" width="7" height="7"/><rect x="19" y="1" width="5" height="5" fill="#fff"/><rect x="20" y="2" width="3" height="3"/>
+                  <rect x="0" y="18" width="7" height="7"/><rect x="1" y="19" width="5" height="5" fill="#fff"/><rect x="2" y="20" width="3" height="3"/>
+                  <rect x="8" y="6" width="1" height="1"/><rect x="10" y="6" width="1" height="1"/><rect x="12" y="6" width="1" height="1"/><rect x="14" y="6" width="1" height="1"/><rect x="16" y="6" width="1" height="1"/>
+                  <rect x="6" y="8" width="1" height="1"/><rect x="6" y="10" width="1" height="1"/><rect x="6" y="12" width="1" height="1"/><rect x="6" y="14" width="1" height="1"/><rect x="6" y="16" width="1" height="1"/>
+                  <rect x="8" y="8" width="1" height="1"/><rect x="9" y="9" width="1" height="1"/><rect x="11" y="8" width="1" height="1"/><rect x="13" y="9" width="1" height="1"/><rect x="14" y="8" width="1" height="1"/><rect x="16" y="9" width="2" height="1"/>
+                  <rect x="10" y="11" width="1" height="2"/><rect x="12" y="11" width="2" height="1"/><rect x="15" y="11" width="1" height="2"/><rect x="17" y="12" width="1" height="1"/><rect x="19" y="11" width="1" height="1"/>
+                  <rect x="8" y="13" width="1" height="1"/><rect x="9" y="14" width="2" height="1"/><rect x="13" y="14" width="1" height="2"/><rect x="15" y="14" width="2" height="1"/><rect x="18" y="13" width="1" height="2"/><rect x="20" y="14" width="1" height="1"/>
+                  <rect x="8" y="16" width="2" height="1"/><rect x="11" y="16" width="1" height="2"/><rect x="13" y="17" width="2" height="1"/><rect x="16" y="16" width="1" height="2"/><rect x="19" y="16" width="1" height="1"/><rect x="22" y="16" width="1" height="1"/>
+                  <rect x="9" y="19" width="1" height="1"/><rect x="11" y="20" width="1" height="1"/><rect x="14" y="19" width="2" height="2"/><rect x="17" y="20" width="1" height="1"/><rect x="20" y="19" width="2" height="1"/>
+                  <rect x="8" y="22" width="1" height="2"/><rect x="11" y="22" width="2" height="1"/><rect x="14" y="23" width="1" height="1"/><rect x="16" y="22" width="1" height="2"/><rect x="19" y="22" width="1" height="1"/><rect x="21" y="23" width="2" height="1"/>
+                </g>
+              </svg>
+          </div>
+          <div class="qr-tag-info">
+            <div class="qt-id">A-828759</div>
+            <div class="qt-sp">国産オオクワガタ ♂</div>
+            <div class="qt-line">CBF1 ・ 2026.04 羽化</div>
+          </div>
+        </div>
+        <div class="qr-tag-foot">かざして読み取り</div>
+      </div>
+
+      <!-- scan beam -->
+      <div class="scan-arc">
+        <svg viewBox="0 0 360 240" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="arcGrad" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0" stop-color="#2E7D6E" stop-opacity="0"/>
+              <stop offset=".5" stop-color="#2E7D6E" stop-opacity=".9"/>
+              <stop offset="1" stop-color="#2E7D6E" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M 20 180 C 100 30, 260 30, 340 180" fill="none" stroke="url(#arcGrad)" stroke-width="1.6" stroke-dasharray="3 6"/>
         </svg>
-        最新情報
+        <div class="scan-pulse"></div>
+      </div>
+
+      <!-- phone with detail -->
+      <div class="spot-phone">
+        <img src="assets/screens/individual-detail.png" alt="" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="spotlight-copy">
+      <div class="kicker">One Label</div>
+      <h2 class="section-title">1 枚の QR ラベルが、<br/>飼育の記録すべてを引き受ける。</h2>
+      <p class="section-lede">
+        書き足すたびに貼り重ねていた管理ラベルは、もう必要ありません。<br/>
+        貼ったら、あとはスマホへ。クラウドで永久保存。
+      </p>
+
+      <ul class="spot-list">
+        <li>
+          <div class="sl-num">01</div>
+          <div class="sl-body">
+            <strong>1 枚で完結</strong>
+            <span>書き加えなくても、貼り直さなくても、情報はすべてアプリ側に。</span>
+          </div>
+        </li>
+        <li>
+          <div class="sl-num">02</div>
+          <div class="sl-body">
+            <strong>かざせば即アクセス</strong>
+            <span>QR を読むだけで、その個体の写真・履歴・血統が広がる。</span>
+          </div>
+        </li>
+        <li>
+          <div class="sl-num">03</div>
+          <div class="sl-body">
+            <strong>クラウドで永久保存</strong>
+            <span>機種変や引っ越しでも、紙のように消えない。世代を超えて残せる。</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FEATURES ========== -->
+<section id="features" class="features">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">Features</div>
+      <h2 class="section-title">飼育の全工程を、ひとつに。</h2>
+      <p class="section-lede">個体管理・ブリード記録・データ分析、そして譲渡や販売の場面まで。</p>
+    </div>
+
+    <div class="feat-grid">
+      <article class="feat">
+        <div class="feat-ic">
+          <svg viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 4c-3 0-5 1.2-5.8 3-1 .8-1.6 2.1-1.6 3.6 0 .5.1 1 .2 1.4-1.5.9-2.4 2.4-2.4 4.2 0 1.4.6 2.6 1.5 3.5-.6 1.4-.5 3 .3 4.3 1.4 2 4.1 3 7.8 3s6.4-1 7.8-3c.8-1.3.9-2.9.3-4.3.9-.9 1.5-2.1 1.5-3.5 0-1.8-.9-3.3-2.4-4.2.1-.4.2-.9.2-1.4 0-1.5-.6-2.8-1.6-3.6C21 5.2 19 4 16 4Z"/>
+            <path d="M16 12v14M11 14l-2-1M21 14l2-1"/>
+          </svg>
+        </div>
+        <h3>個体管理</h3>
+        <p>種・亜種・血統・産地・累代・性別・状態まで、個体ごとに記録。管理番号（任意）も付与できます。</p>
+      </article>
+
+      <article class="feat">
+        <div class="feat-ic">
+          <svg viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="9" width="22" height="16" rx="3"/>
+            <circle cx="16" cy="17" r="4.2"/>
+            <path d="M11 9l1.6-2.6h6.8L21 9"/>
+          </svg>
+        </div>
+        <h3>写真記録</h3>
+        <p>代表写真に加え、飼育中の履歴写真も保存。成長の過程をそのまま残せます。</p>
+      </article>
+
+      <article class="feat">
+        <div class="feat-ic">
+          <svg viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="16" cy="7" r="3"/>
+            <circle cx="9" cy="25" r="3"/>
+            <circle cx="23" cy="25" r="3"/>
+            <path d="M16 10v8M9 18h14M9 18v4M23 18v4"/>
+          </svg>
+        </div>
+        <h3>血統樹（累代ツリー）</h3>
+        <p>親・系統を累代ツリーで可視化。血統の流れがひと目で追えます。</p>
+      </article>
+
+      <article class="feat">
+        <div class="feat-ic">
+          <svg viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="13" r="5"/><circle cx="21" cy="13" r="5"/>
+            <path d="M9 22c1 3 4 5 7 5s6-2 7-5"/>
+          </svg>
+        </div>
+        <h3>ペアリング</h3>
+        <p>ハンドペア・同居の履歴を残し、産卵セットへスムーズに移行。</p>
+      </article>
+
+      <article class="feat">
+        <div class="feat-ic">
+          <svg viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="16" cy="18" rx="8" ry="10"/>
+            <path d="M12 14c.5-2 1.5-3.5 3-4"/>
+          </svg>
+        </div>
+        <h3>産卵セット</h3>
+        <p>産卵数や割り出し予定を管理。そのまま幼虫ロットに引き継げます。</p>
+      </article>
+
+      <article class="feat">
+        <div class="feat-ic">
+          <svg viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 26V14M11 18c0-3 2-5 5-5 3 0 5 2 5 5"/>
+            <path d="M16 14c-2-2-2-5 0-8 2 3 2 6 0 8Z"/>
+          </svg>
+        </div>
+        <h3>幼虫ロット</h3>
+        <p>卵・幼虫・蛹・成虫の数を一括管理。昇格・廃棄もワンタップ。</p>
+      </article>
+
+      <article class="feat">
+        <div class="feat-ic">
+          <svg viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 4h4v14M14 4a2 2 0 0 0-2 2v12M18 4a2 2 0 0 1 2 2v12"/>
+            <circle cx="16" cy="22" r="5"/>
+            <path d="M16 12h-2M16 16h-2"/>
+          </svg>
+        </div>
+        <h3>温度管理</h3>
+        <p>飼育場所ごとの温度を記録し、シーズン管理をサポート。</p>
+      </article>
+
+      <article class="feat">
+        <div class="feat-ic">
+          <svg viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 5a7 7 0 0 0-7 7c0 7-2 8-2 8h18s-2-1-2-8a7 7 0 0 0-7-7Z"/>
+            <path d="M13.5 25a2.5 2.5 0 0 0 5 0"/>
+          </svg>
+        </div>
+        <h3>通知（リマインド）</h3>
+        <p>ゼリー交換や割り出しなど、飼育イベントを通知でリマインドします。</p>
+      </article>
+
+      <article class="feat">
+        <div class="feat-ic">
+          <svg viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12 12 4h16v16L20 28Z"/>
+            <rect x="14" y="10" width="8" height="8" rx="1"/>
+            <path d="M16 12h2v2h-2zM18 16h2v2h-2zM16 16h1M19 12h1"/>
+          </svg>
+        </div>
+        <h3>管理ラベル</h3>
+        <p>QR 付きラベルを 1 枚貼るだけ。書き加えず、スマホからアプリ内に情報を蓄積。</p>
+      </article>
+
+      <article class="feat">
+        <div class="feat-ic">
+          <svg viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 4H9a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V10Z"/>
+            <path d="M19 4v6h6"/>
+            <path d="M16 15v8M12.5 19.5 16 23l3.5-3.5"/>
+          </svg>
+        </div>
+        <h3>レポート出力（PDF / CSV）</h3>
+        <p>飼育レポートを PDF で、記録を CSV で書き出し。データはいつでも手元に。</p>
+      </article>
+
+      <article class="feat">
+        <div class="feat-ic">
+          <svg viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 14 14 4h10v10L14 24Z"/>
+            <circle cx="20" cy="11" r="1.5"/>
+          </svg>
+        </div>
+        <h3>販売札・出品テンプレート</h3>
+        <p>即売会の販売札と、SNS・通販向けの出品テンプレートをアプリ内で作成。</p>
+      </article>
+
+      <article class="feat">
+        <div class="feat-ic">
+          <svg viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="5" width="8" height="8" rx="1"/>
+            <rect x="19" y="5" width="8" height="8" rx="1"/>
+            <rect x="5" y="19" width="8" height="8" rx="1"/>
+            <path d="M19 19h3M25 19v3M22 25v3M27 22v5M19 25h3"/>
+          </svg>
+        </div>
+        <h3>譲渡 QR</h3>
+        <p>譲渡相手に QR で個体情報を引き継ぎ。血統が途切れません。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SCREENS ========== -->
+<section id="screens" class="screens">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <div class="kicker">Screens</div>
+      <h2 class="section-title">シンプルで、所作に寄り添う UI。</h2>
+      <p class="section-lede">毎日の入力に効くショートカットと、累代を遡る視認性を両立。</p>
+    </div>
+
+    <div class="screens-stage">
+      <div class="screens-rail">
+        <div class="phone phone--tilt-l" data-phone="list">
+          <div class="phone-cap">個体一覧</div>
+        </div>
+        <div class="phone phone--center" data-phone="detail">
+          <div class="phone-cap">個体詳細</div>
+        </div>
+        <div class="phone phone--tilt-r" data-phone="tag">
+          <div class="phone-cap">販売札</div>
+        </div>
+      </div>
+      <div class="screens-note">
+        <span class="note-dot"></span>
+        以下は実機キャプチャ（β版）です。一部画面は順次追加します。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== GALLERY ========== -->
+<section id="gallery" class="gallery">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <div class="kicker">In Action</div>
+      <h2 class="section-title">記録から出品まで、<br/>すべての場面を一気通貫で。</h2>
+      <p class="section-lede">BeetLog は飼育の入力から、ラベル印刷・出品文面・販売札の作成まで、ブリーダーの動線にあわせて設計されています。</p>
+    </div>
+
+    <div class="gallery-grid">
+      <figure class="g-item">
+        <div class="mini-phone"><img src="assets/screens/breed-register.png" alt="産卵セット登録画面" loading="lazy" /></div>
+        <figcaption class="g-cap">
+          <div class="g-num">01</div>
+          <h4>産卵セットを組む</h4>
+          <p>ペア・床材・容器・管理温度をひと画面で。割り出し予定の目安まで自動で。</p>
+        </figcaption>
+      </figure>
+
+      <figure class="g-item">
+        <div class="mini-phone"><img src="assets/screens/breed-harvest.png" alt="割り出し記録画面" loading="lazy" /></div>
+        <figcaption class="g-cap">
+          <div class="g-num">02</div>
+          <h4>割り出しの記録</h4>
+          <p>卵数・幼虫数を記録して、次のアクション（再セット／引き上げ）を選ぶだけ。</p>
+        </figcaption>
+      </figure>
+
+      <figure class="g-item">
+        <div class="mini-phone"><img src="assets/screens/lot-detail.png" alt="幼虫ロット詳細画面" loading="lazy" /></div>
+        <figcaption class="g-cap">
+          <div class="g-num">03</div>
+          <h4>幼虫ロットの内訳</h4>
+          <p>卵・1令・2令・3令・蛹・成虫をステージ別に管理。昇格も死亡もタップ操作で。</p>
+        </figcaption>
+      </figure>
+
+      <figure class="g-item">
+        <div class="mini-phone"><img src="assets/screens/task-calendar.png" alt="タスク管理カレンダー" loading="lazy" /></div>
+        <figcaption class="g-cap">
+          <div class="g-num">04</div>
+          <h4>タスク管理</h4>
+          <p>ゼリー交換・割り出しなど日々のタスクをカレンダー＆リストで。当日朝に通知。</p>
+        </figcaption>
+      </figure>
+
+      <figure class="g-item">
+        <div class="mini-phone"><img src="assets/screens/label-preview.png" alt="管理ラベル印刷プレビュー" loading="lazy" /></div>
+        <figcaption class="g-cap">
+          <div class="g-num">05</div>
+          <h4>QR で現物とつなぐラベル</h4>
+          <p>個体ごとの QR を A4 シールやサーマルプリンタへ。書き加えなくても、スマホで即アクセス。</p>
+        </figcaption>
+      </figure>
+
+      <figure class="g-item">
+        <div class="mini-phone"><img src="assets/screens/tag-form.png" alt="販売札の作成画面" loading="lazy" /></div>
+        <figcaption class="g-cap">
+          <div class="g-num">06</div>
+          <h4>販売札の作成</h4>
+          <p>個体 DB からの読み込みに対応。8 種類のテンプレから選んで A4 シールに印刷。</p>
+        </figcaption>
+      </figure>
+
+      <figure class="g-item">
+        <div class="mini-phone"><img src="assets/screens/listing-template.png" alt="出品文面の自動生成" loading="lazy" /></div>
+        <figcaption class="g-cap">
+          <div class="g-num">07</div>
+          <h4>出品文面の自動生成</h4>
+          <p>個体データから、ヤフオク・メルカリにそのまま貼れる出品テキストを生成。</p>
+        </figcaption>
+      </figure>
+
+      <figure class="g-item">
+        <div class="mini-phone">
+          <div class="mock-screen mock-screen--send" data-mock="send-qr">
+            <div class="ms-status"><span>9:41</span><span class="ms-ico" aria-hidden="true">●●●</span></div>
+            <div class="ms-app-hd"><span class="ms-back">‹</span><span class="ms-app-title">譲渡 QR</span><span class="ms-app-act" aria-hidden="true">⤴</span></div>
+            <div class="ms-body">
+              <div class="ms-ind-card">
+                <div class="ms-ind-sp">国産オオクワガタ ♂</div>
+                <div class="ms-ind-meta">A-828759 ・ 65mm ・ CBF1</div>
+              </div>
+              <div class="ms-qr-card">
+                <div class="ms-qr-img" aria-hidden="true">
+                  <svg viewBox="0 0 25 25" preserveAspectRatio="none">
+                    <rect width="25" height="25" fill="#fff"/>
+                    <g fill="#2B1A0F">
+                      <!-- finder TL -->
+                      <rect x="0" y="0" width="7" height="7"/>
+                      <rect x="1" y="1" width="5" height="5" fill="#fff"/>
+                      <rect x="2" y="2" width="3" height="3"/>
+                      <!-- finder TR -->
+                      <rect x="18" y="0" width="7" height="7"/>
+                      <rect x="19" y="1" width="5" height="5" fill="#fff"/>
+                      <rect x="20" y="2" width="3" height="3"/>
+                      <!-- finder BL -->
+                      <rect x="0" y="18" width="7" height="7"/>
+                      <rect x="1" y="19" width="5" height="5" fill="#fff"/>
+                      <rect x="2" y="20" width="3" height="3"/>
+                      <!-- timing tracks -->
+                      <rect x="8" y="6" width="1" height="1"/><rect x="10" y="6" width="1" height="1"/><rect x="12" y="6" width="1" height="1"/><rect x="14" y="6" width="1" height="1"/><rect x="16" y="6" width="1" height="1"/>
+                      <rect x="6" y="8" width="1" height="1"/><rect x="6" y="10" width="1" height="1"/><rect x="6" y="12" width="1" height="1"/><rect x="6" y="14" width="1" height="1"/><rect x="6" y="16" width="1" height="1"/>
+                      <!-- data pattern (deterministic-feeling) -->
+                      <rect x="8" y="8" width="1" height="1"/><rect x="9" y="9" width="1" height="1"/><rect x="11" y="8" width="1" height="1"/><rect x="13" y="9" width="1" height="1"/><rect x="14" y="8" width="1" height="1"/><rect x="16" y="9" width="2" height="1"/>
+                      <rect x="10" y="11" width="1" height="2"/><rect x="12" y="11" width="2" height="1"/><rect x="15" y="11" width="1" height="2"/><rect x="17" y="12" width="1" height="1"/><rect x="19" y="11" width="1" height="1"/>
+                      <rect x="8" y="13" width="1" height="1"/><rect x="9" y="14" width="2" height="1"/><rect x="13" y="14" width="1" height="2"/><rect x="15" y="14" width="2" height="1"/><rect x="18" y="13" width="1" height="2"/><rect x="20" y="14" width="1" height="1"/>
+                      <rect x="8" y="16" width="2" height="1"/><rect x="11" y="16" width="1" height="2"/><rect x="13" y="17" width="2" height="1"/><rect x="16" y="16" width="1" height="2"/><rect x="19" y="16" width="1" height="1"/><rect x="22" y="16" width="1" height="1"/>
+                      <rect x="9" y="19" width="1" height="1"/><rect x="11" y="20" width="1" height="1"/><rect x="14" y="19" width="2" height="2"/><rect x="17" y="20" width="1" height="1"/><rect x="20" y="19" width="2" height="1"/>
+                      <rect x="8" y="22" width="1" height="2"/><rect x="11" y="22" width="2" height="1"/><rect x="14" y="23" width="1" height="1"/><rect x="16" y="22" width="1" height="2"/><rect x="19" y="22" width="1" height="1"/><rect x="21" y="23" width="2" height="1"/>
+                    </g>
+                  </svg>
+                </div>
+                <div class="ms-code-label">請求コード</div>
+                <div class="ms-code">F7K3 · PM92</div>
+              </div>
+              <button class="ms-btn ms-btn--primary">シェアして渡す</button>
+              <div class="ms-help">受け取り側で QR またはコードを入力すると、<br/>血統データがそのまま引き継がれます。</div>
+            </div>
+          </div>
+        </div>
+        <figcaption class="g-cap">
+          <div class="g-num">08</div>
+          <h4>譲渡QRの発行</h4>
+          <p>個体情報を暗号化して QR ＋ 8 桁の請求コードに。血統を途切れさせず受け渡し。</p>
+        </figcaption>
+      </figure>
+
+      <figure class="g-item">
+        <div class="mini-phone">
+          <div class="mock-screen mock-screen--recv" data-mock="recv-qr">
+            <div class="ms-status"><span>9:41</span><span class="ms-ico" aria-hidden="true">●●●</span></div>
+            <div class="ms-app-hd"><span class="ms-back">‹</span><span class="ms-app-title">QR を読み取る</span><span></span></div>
+            <div class="ms-body ms-body--dark">
+              <div class="ms-camera">
+                <div class="ms-camera-bg" aria-hidden="true"></div>
+                <div class="ms-target" aria-hidden="true">
+                  <span class="ms-corner ms-corner--tl"></span>
+                  <span class="ms-corner ms-corner--tr"></span>
+                  <span class="ms-corner ms-corner--bl"></span>
+                  <span class="ms-corner ms-corner--br"></span>
+                </div>
+                <div class="ms-cam-hint">QR コードを枠内に収めてください</div>
+              </div>
+              <div class="ms-or"><span>または</span></div>
+              <button class="ms-btn ms-btn--ghost">8 桁の請求コードを入力</button>
+              <div class="ms-help">受け取った QR をスキャンするか、<br/>送り主から共有されたコードを入力。</div>
+            </div>
+          </div>
+        </div>
+        <figcaption class="g-cap">
+          <div class="g-num">09</div>
+          <h4>譲渡を受け取る</h4>
+          <p>QR スキャン、または 8 桁コード入力で個体情報を復号して引き継ぎ。</p>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ========== HOW IT WORKS ========== -->
+<section id="how" class="how">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">How it Works</div>
+      <h2 class="section-title">3 ステップで、はじめられる。</h2>
+      <p class="section-lede">インストールしたその日のうちに、記録をはじめられます。</p>
+    </div>
+
+    <ol class="steps">
+      <li class="step">
+        <div class="step-n">01</div>
+        <div class="step-body">
+          <h3>個体を登録</h3>
+          <p>種・血統・産地・写真をサクッと入力。QR があれば、ほぼワンタップで取り込み。</p>
+        </div>
+        <div class="step-vis" data-step="register"></div>
+      </li>
+      <li class="step">
+        <div class="step-n">02</div>
+        <div class="step-body">
+          <h3>飼育記録を追加</h3>
+          <p>エサ替え・体重測定・温度をタップで記録。産卵セットや幼虫ロットも紐づけて管理。</p>
+        </div>
+        <div class="step-vis" data-step="log">
+          <span class="bar" style="--h:38%"></span>
+          <span class="bar" style="--h:62%"></span>
+          <span class="bar" style="--h:48%"></span>
+          <span class="bar bar--lit" style="--h:82%"></span>
+          <span class="bar" style="--h:56%"></span>
+          <span class="bar" style="--h:72%"></span>
+          <span class="bar" style="--h:44%"></span>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-n">03</div>
+        <div class="step-body">
+          <h3>譲渡・販売へ</h3>
+          <p>QR で個体情報を相手に引き継ぎ。即売会や通販には販売札を印刷して。</p>
+        </div>
+        <div class="step-vis" data-step="ship">
+          <div class="qr-mini" aria-hidden="true"></div>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ========== PRICING ========== -->
+<section id="pricing" class="pricing">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">Pricing</div>
+      <h2 class="section-title">毎日の記録は、<br/>ぜんぶ無料で。</h2>
+      <p class="section-lede">個体管理から産卵セット、幼虫ロット、温度管理、タスク、譲渡 QR まで。飼育の記録と管理は、無料プランで完結します。Premium は「もっと使い込む人」のための拡張です。</p>
+    </div>
+
+    <div class="launch-banner">
+      <div class="lb-tag">Launch Campaign</div>
+      <div class="lb-body">
+        <strong>ローンチから一定期間は、Premium 機能もすべて無料でお試しいただけます。</strong>
+        <span>期間や条件は順次アプリ内・X で告知します。</span>
+      </div>
+    </div>
+
+    <div class="plans">
+      <div class="plans-row plans-row--head">
+        <div class="pl-cell pl-cell--label"></div>
+        <div class="pl-cell pl-cell--free">
+          <div class="pl-name">Free</div>
+          <div class="pl-price">¥0<span>/ 永続</span></div>
+          <div class="pl-tagline">まずは無料で。</div>
+        </div>
+        <div class="pl-cell pl-cell--prem">
+          <div class="pl-badge">Recommended</div>
+          <div class="pl-name">Premium</div>
+          <div class="pl-price pl-price--soon">価格は順次公開</div>
+          <div class="pl-tagline">月額・年額（自動更新）</div>
+        </div>
+      </div>
+
+      <div class="plans-row">
+        <div class="pl-cell pl-cell--label">
+          <strong>日々の記録・管理</strong>
+          <span>個体管理・ペアリング・産卵セット・幼虫ロット・温度管理・タスク・譲渡 QR</span>
+        </div>
+        <div class="pl-cell pl-cell--free"><span class="pl-yes pl-yes--check">すべて使える</span></div>
+        <div class="pl-cell pl-cell--prem"><span class="pl-yes pl-yes--check">すべて使える</span></div>
+      </div>
+
+      <div class="plans-row">
+        <div class="pl-cell pl-cell--label">
+          <strong>出力系 5 機能</strong>
+          <span>販売札 / 飼育レポート / データ引継ぎ / 出品テンプレート / CSV 書き出し</span>
+        </div>
+        <div class="pl-cell pl-cell--free"><span class="pl-meter">合計 月5回<small>まで</small></span></div>
+        <div class="pl-cell pl-cell--prem"><span class="pl-yes">無制限</span></div>
+      </div>
+
+      <div class="plans-row">
+        <div class="pl-cell pl-cell--label">
+          <strong>写真のクラウド保存・復元</strong>
+          <span>代表写真は無料でもクラウド保存。履歴写真の保存・復元は Premium。</span>
+        </div>
+        <div class="pl-cell pl-cell--free"><span class="pl-meter">代表写真のみ<small>履歴写真はローカル</small></span></div>
+        <div class="pl-cell pl-cell--prem"><span class="pl-yes">すべてクラウド保存</span></div>
+      </div>
+
+      <div class="plans-row">
+        <div class="pl-cell pl-cell--label">
+          <strong>譲渡時に飼育履歴の写真も引き継ぎ</strong>
+          <span>QR 譲渡で、写真つきの履歴ごと相手に受け渡し</span>
+        </div>
+        <div class="pl-cell pl-cell--free"><span class="pl-dash">—</span></div>
+        <div class="pl-cell pl-cell--prem"><span class="pl-yes pl-yes--check">対応</span></div>
+      </div>
+    </div>
+
+    <p class="plans-note">※ 管理ラベル（QR）の印刷は、無料プランでも回数無制限でご利用いただけます。</p>
+    <p class="plans-note">※ 無料プランは将来的に、カブト・クワガタ関連（飼育用品・マット・イベント告知など）の広告表示を予定しています。</p>
+
+    <p class="price-foot">
+      課金は App Store / Google Play 経由です。解約は購入元のサブスクリプション設定からいつでも可能です。
+    </p>
+  </div>
+</section>
+
+<!-- ========== COMING SOON ========== -->
+<section class="coming">
+  <div class="container coming-inner">
+    <div class="coming-copy">
+      <img class="coming-icon" src="assets/app-icon.png" alt="BeetLog app icon" width="120" height="120" />
+      <div class="kicker">Coming Soon</div>
+      <h2 class="section-title">App Store / Google Play<br/>で順次公開予定</h2>
+      <p class="section-lede">公開のお知らせは X (<a href="https://x.com/beetlog_app" target="_blank" rel="noopener">@beetlog_app</a>) で発信します。</p>
+    </div>
+    <div class="badges">
+      <div class="badge">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M17.05 12.46c-.03-2.74 2.24-4.05 2.34-4.12-1.27-1.85-3.25-2.11-3.96-2.14-1.68-.17-3.28 1-4.13 1-.86 0-2.18-.97-3.58-.94C5.9 6.3 4.3 7.27 3.45 8.83c-1.81 3.13-.46 7.76 1.32 10.3.85 1.24 1.87 2.64 3.22 2.59 1.29-.05 1.78-.84 3.34-.84 1.56 0 2 .84 3.36.81 1.39-.02 2.27-1.26 3.13-2.51.97-1.44 1.38-2.84 1.4-2.91-.03-.01-2.7-1.03-2.73-4.1Zm-2.74-7.55c.7-.86 1.18-2.06 1.05-3.24-1.02.04-2.24.67-2.97 1.52-.66.75-1.23 1.96-1.08 3.12 1.14.09 2.3-.58 3-1.4Z"/></svg>
+        <div>
+          <div class="badge-k">Coming soon</div>
+          <div class="badge-v">App Store</div>
+        </div>
+      </div>
+      <div class="badge">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M3.5 2.2v19.6c0 .4.4.6.7.4l11-9.8c.3-.2.3-.6 0-.8l-11-9.8c-.3-.2-.7 0-.7.4Z"/></svg>
+        <div>
+          <div class="badge-k">Coming soon</div>
+          <div class="badge-v">Google Play</div>
+        </div>
+      </div>
+      <div class="badge badge--meta">
+        <div>
+          <div class="badge-k">iOS</div>
+          <div class="badge-v">iOS 16+</div>
+        </div>
+        <div>
+          <div class="badge-k">Android</div>
+          <div class="badge-v">Android 10+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section id="faq" class="faq">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">FAQ</div>
+      <h2 class="section-title">よくあるご質問</h2>
+    </div>
+    <div class="faq-list">
+      <details>
+        <summary>いつから使えますか？<span class="faq-x">+</span></summary>
+        <p>App Store / Google Play で順次公開予定です。公開のお知らせは X (<a href="https://x.com/beetlog_app" target="_blank" rel="noopener">@beetlog_app</a>) で発信しますので、ぜひフォローしてください。</p>
+      </details>
+      <details>
+        <summary>無料で使えますか？<span class="faq-x">+</span></summary>
+        <p>はい。個体管理・産卵セット・幼虫ロット・温度管理・タスク・譲渡 QR など、日々の記録と管理は無料プランですべてお使いいただけます。Premium との違いは主に 3 点（出力系 5 機能の回数制限の解放／履歴写真のクラウド保存・復元／譲渡時に写真も引き継ぎ）です。さらにローンチから一定期間は、Premium 機能を含めて全機能を無料でお試しいただける予定です。</p>
+      </details>
+      <details>
+        <summary>データはどこに保存されますか？<span class="faq-x">+</span></summary>
+        <p>飼育データはクラウド (Google Cloud / Firebase) に安全に保存されます。詳しくは<a href="privacy.html">プライバシーポリシー</a>をご確認ください。</p>
+      </details>
+      <details>
+        <summary>機種変更時にデータは引き継げますか？<span class="faq-x">+</span></summary>
+        <p>アカウントでログインすることで、新しい端末でも同じデータをそのままご利用いただけます。アカウントを作らずに利用（ゲストモード）した場合は端末内のみの保存となるためご注意ください。</p>
+      </details>
+      <details>
+        <summary>譲渡 QR とは何ですか？<span class="faq-x">+</span></summary>
+        <p>個体情報（種・血統・産地・累代など）を QR コードで他のユーザーへ引き継げる機能です。譲渡や販売のたびに血統情報が途切れず、ブリーダー同士でデータをスムーズに共有できます。</p>
+      </details>
+      <details>
+        <summary>解約はどうやってできますか？<span class="faq-x">+</span></summary>
+        <p>iOS は「設定」→「Apple ID」→「サブスクリプション」、Android は「Google Play ストア」→「アカウント」→「定期購入」からいつでも解約できます。詳しくは<a href="tokushoho.html">特定商取引法に基づく表記</a>をご覧ください。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand brand--lg" href="#top">
+        <img class="brand-mark brand-mark--img" src="assets/app-icon.png" alt="" width="36" height="36" />
+        <span class="brand-name">BeetLog</span>
+      </a>
+      <p>カブト・クワガタのための飼育記録アプリ。<br/>Breeders Innovation が運営しています。</p>
+      <a class="footer-x" href="https://x.com/beetlog_app" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M18.244 2H21l-6.52 7.45L22.5 22H16l-4.95-6.475L5.3 22H2.5l7-8L1.5 2h6.65l4.5 5.94L18.244 2Zm-1.14 18h1.65L7.05 4H5.3l11.804 16Z"/></svg>
+        @beetlog_app
       </a>
     </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="relative overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4 py-20 md:py-28 grid md:grid-cols-2 gap-10 items-center">
-      <div>
-        <p class="text-amber-800 font-semibold text-sm tracking-widest uppercase">All-in-One Breeding App</p>
-        <h1 class="mt-3 text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
-          飼育データを資産に。<br />記録・管理・分析を<br class="md:hidden" />スマホ一つで。
-        </h1>
-        <p class="mt-6 text-stone-600 text-lg leading-relaxed">
-          個体管理からブリード記録、データ分析、譲渡、販売まで。<br />
-          ブリーダーのすべての場面を、シームレスにつなぎます。
-        </p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href="#features" class="inline-flex items-center rounded-full bg-amber-800 text-white px-6 py-3 font-medium hover:bg-amber-900 transition">
-            機能を見る
-          </a>
-          <a href="https://x.com/beetlog_app" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-stone-300 px-6 py-3 font-medium hover:bg-white transition">
-            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor" aria-hidden="true">
-              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-            </svg>
-            X で最新情報を見る
-          </a>
-        </div>
-        <p class="mt-4 text-xs text-stone-500">※ iOS / Android で順次公開予定</p>
-      </div>
-      <div class="relative">
-        <div class="aspect-[9/16] max-w-xs mx-auto bg-gradient-to-br from-amber-100 to-stone-200 rounded-3xl shadow-xl flex items-center justify-center text-stone-400 text-sm">
-          App Screenshot
-        </div>
-      </div>
+    <div class="footer-col">
+      <h4>プロダクト</h4>
+      <ul>
+        <li><a href="#why">特徴</a></li>
+        <li><a href="#features">機能</a></li>
+        <li><a href="#how">使い方</a></li>
+        <li><a href="#pricing">料金</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
     </div>
-  </section>
-
-  <!-- Why BeetLog? -->
-  <section id="why" class="bg-white border-y border-stone-200">
-    <div class="max-w-6xl mx-auto px-4 py-20">
-      <div class="reveal">
-        <p class="text-center text-amber-800 font-semibold text-sm tracking-widest uppercase">Why BeetLog</p>
-        <h2 class="mt-2 text-3xl font-bold text-center">スプレッドシートや紙のノートに、<br class="md:hidden"/>もう戻れません。</h2>
-        <p class="mt-3 text-center text-stone-600">記録の手間を最小化し、データを世代を超えて活かす。それが BeetLog です。</p>
-      </div>
-
-      <div class="mt-12 grid md:grid-cols-3 gap-6">
-        <article class="reveal rounded-2xl border border-stone-200 p-6 bg-stone-50">
-          <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-stone-200 text-stone-500 text-xl">📒</div>
-          <h3 class="mt-4 font-bold text-lg">紙のノートの限界</h3>
-          <ul class="mt-3 text-sm text-stone-600 space-y-1.5">
-            <li>・写真と記録が結びつかない</li>
-            <li>・累代を遡るのに時間がかかる</li>
-            <li>・譲渡時に情報を渡せない</li>
-          </ul>
-        </article>
-        <article class="reveal rounded-2xl border border-stone-200 p-6 bg-stone-50">
-          <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-stone-200 text-stone-500 text-xl">📊</div>
-          <h3 class="mt-4 font-bold text-lg">表計算ソフトの面倒</h3>
-          <ul class="mt-3 text-sm text-stone-600 space-y-1.5">
-            <li>・セル設計と入力規則に時間を取られる</li>
-            <li>・スマホで開くたびに崩れる</li>
-            <li>・写真や履歴を一元化できない</li>
-          </ul>
-        </article>
-        <article class="reveal rounded-2xl border-2 border-amber-700 p-6 bg-amber-50/60 shadow-sm">
-          <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-amber-700 text-white text-xl">🪲</div>
-          <h3 class="mt-4 font-bold text-lg text-amber-900">BeetLog なら</h3>
-          <ul class="mt-3 text-sm text-stone-700 space-y-1.5">
-            <li>✓ ブリーダー専用設計、入力は最短数タップ</li>
-            <li>✓ 個体・血統・産卵セット・幼虫ロットを一元管理</li>
-            <li>✓ QR で譲渡、販売札もアプリ内で作成</li>
-          </ul>
-        </article>
-      </div>
+    <div class="footer-col">
+      <h4>運営</h4>
+      <ul>
+        <li><a href="privacy.html">プライバシーポリシー</a></li>
+        <li><a href="terms.html">利用規約</a></li>
+        <li><a href="tokushoho.html">特定商取引法に基づく表記</a></li>
+        <li><a href="support.html">サポート / お問い合わせ</a></li>
+      </ul>
     </div>
-  </section>
+  </div>
+  <div class="container footer-base">
+    <span>© Breeders Innovation. All rights reserved.</span>
+    <span>BeetLog™</span>
+  </div>
+</footer>
 
-  <!-- Features -->
-  <section id="features" class="bg-stone-50 border-b border-stone-200">
-    <div class="max-w-6xl mx-auto px-4 py-20">
-      <div class="reveal">
-        <p class="text-center text-amber-800 font-semibold text-sm tracking-widest uppercase">Features</p>
-        <h2 class="mt-2 text-3xl font-bold text-center">飼育の全工程を、一つに。</h2>
-        <p class="mt-3 text-center text-stone-600">個体管理・ブリード記録・データ分析、そして譲渡や販売の場面まで。</p>
-      </div>
+<script src="phones.js"></script>
+<script src="lp.js"></script>
 
-      <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <article class="reveal rounded-2xl border border-stone-200 p-6 bg-white hover:shadow-md transition">
-          <div class="text-3xl">🪲</div>
-          <h3 class="mt-3 font-bold text-lg">個体管理</h3>
-          <p class="mt-2 text-sm text-stone-600">種・血統・産地・世代を写真付きで記録。QRで個体カードを共有できます。</p>
-        </article>
-        <article class="reveal rounded-2xl border border-stone-200 p-6 bg-white hover:shadow-md transition">
-          <div class="text-3xl">💞</div>
-          <h3 class="mt-3 font-bold text-lg">ペアリング</h3>
-          <p class="mt-2 text-sm text-stone-600">ハンドペア・同居の履歴を残し、産卵セットへスムーズに移行。</p>
-        </article>
-        <article class="reveal rounded-2xl border border-stone-200 p-6 bg-white hover:shadow-md transition">
-          <div class="text-3xl">🥚</div>
-          <h3 class="mt-3 font-bold text-lg">産卵セット</h3>
-          <p class="mt-2 text-sm text-stone-600">産卵数や割り出し予定を管理し、そのまま幼虫ロットへ。</p>
-        </article>
-        <article class="reveal rounded-2xl border border-stone-200 p-6 bg-white hover:shadow-md transition">
-          <div class="text-3xl">🌱</div>
-          <h3 class="mt-3 font-bold text-lg">幼虫ロット</h3>
-          <p class="mt-2 text-sm text-stone-600">卵・幼虫・蛹・成虫の数を一括管理。昇格・廃棄もワンタップ。</p>
-        </article>
-        <article class="reveal rounded-2xl border border-stone-200 p-6 bg-white hover:shadow-md transition">
-          <div class="text-3xl">🌡️</div>
-          <h3 class="mt-3 font-bold text-lg">温度管理</h3>
-          <p class="mt-2 text-sm text-stone-600">飼育場所ごとの温度を記録し、シーズン管理をサポート。</p>
-        </article>
-        <article class="reveal rounded-2xl border border-stone-200 p-6 bg-white hover:shadow-md transition">
-          <div class="text-3xl">🔗</div>
-          <h3 class="mt-3 font-bold text-lg">譲渡QR</h3>
-          <p class="mt-2 text-sm text-stone-600">譲渡相手にQRで個体情報を引き継ぎ。血統が途切れません。</p>
-        </article>
-        <article class="reveal rounded-2xl border border-stone-200 p-6 bg-white hover:shadow-md transition">
-          <div class="text-3xl">🏷️</div>
-          <h3 class="mt-3 font-bold text-lg">販売札の作成</h3>
-          <p class="mt-2 text-sm text-stone-600">即売会・通販向けの販売札をアプリ内で作成・印刷。</p>
-        </article>
-        <article class="reveal rounded-2xl border border-stone-200 p-6 bg-white hover:shadow-md transition">
-          <div class="text-3xl">📜</div>
-          <h3 class="mt-3 font-bold text-lg">飼育タイムライン</h3>
-          <p class="mt-2 text-sm text-stone-600">個体ごとの出来事を時系列で振り返り、次の累代に活かす。</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Screens -->
-  <section id="screens" class="max-w-6xl mx-auto px-4 py-20">
-    <div class="reveal">
-      <p class="text-center text-amber-800 font-semibold text-sm tracking-widest uppercase">Screens</p>
-      <h2 class="mt-2 text-3xl font-bold text-center">画面イメージ</h2>
-      <p class="mt-3 text-center text-stone-600">シンプルで、ブリーダーの所作に寄り添うUI。</p>
-    </div>
-    <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="reveal aspect-[9/16] bg-gradient-to-br from-amber-100 to-stone-200 rounded-2xl shadow-sm flex items-center justify-center text-stone-400 text-xs">ホーム</div>
-      <div class="reveal aspect-[9/16] bg-gradient-to-br from-amber-100 to-stone-200 rounded-2xl shadow-sm flex items-center justify-center text-stone-400 text-xs">個体一覧</div>
-      <div class="reveal aspect-[9/16] bg-gradient-to-br from-amber-100 to-stone-200 rounded-2xl shadow-sm flex items-center justify-center text-stone-400 text-xs">ブリード管理</div>
-      <div class="reveal aspect-[9/16] bg-gradient-to-br from-amber-100 to-stone-200 rounded-2xl shadow-sm flex items-center justify-center text-stone-400 text-xs">販売札</div>
-    </div>
-    <p class="mt-6 text-center text-xs text-stone-500">※ 実際の画面イメージは順次掲載予定</p>
-  </section>
-
-  <!-- How it works -->
-  <section id="how" class="bg-white border-y border-stone-200">
-    <div class="max-w-6xl mx-auto px-4 py-20">
-      <div class="reveal">
-        <p class="text-center text-amber-800 font-semibold text-sm tracking-widest uppercase">How it Works</p>
-        <h2 class="mt-2 text-3xl font-bold text-center">3ステップで、はじめられる。</h2>
-        <p class="mt-3 text-center text-stone-600">アプリを入れたら、その日のうちに記録をはじめられます。</p>
-      </div>
-
-      <div class="mt-12 grid md:grid-cols-3 gap-8 relative">
-        <div class="reveal text-center">
-          <div class="mx-auto w-16 h-16 rounded-full bg-amber-700 text-white text-2xl font-bold flex items-center justify-center shadow-md">1</div>
-          <h3 class="mt-4 font-bold text-lg">個体を登録</h3>
-          <p class="mt-2 text-sm text-stone-600 leading-relaxed">種・血統・産地・写真をサクッと入力。<br/>QRがあれば、ほぼワンタップで取り込み。</p>
-        </div>
-        <div class="reveal text-center">
-          <div class="mx-auto w-16 h-16 rounded-full bg-amber-700 text-white text-2xl font-bold flex items-center justify-center shadow-md">2</div>
-          <h3 class="mt-4 font-bold text-lg">飼育記録を追加</h3>
-          <p class="mt-2 text-sm text-stone-600 leading-relaxed">エサ替え・体重測定・温度をタップで記録。<br/>産卵セットや幼虫ロットも紐づけて管理。</p>
-        </div>
-        <div class="reveal text-center">
-          <div class="mx-auto w-16 h-16 rounded-full bg-amber-700 text-white text-2xl font-bold flex items-center justify-center shadow-md">3</div>
-          <h3 class="mt-4 font-bold text-lg">譲渡・販売へ</h3>
-          <p class="mt-2 text-sm text-stone-600 leading-relaxed">QR で個体情報を相手に引き継ぎ。<br/>即売会や通販には販売札を印刷して。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pricing -->
-  <section id="pricing" class="bg-stone-50 border-b border-stone-200">
-    <div class="max-w-5xl mx-auto px-4 py-20">
-      <div class="reveal">
-        <p class="text-center text-amber-800 font-semibold text-sm tracking-widest uppercase">Pricing</p>
-        <h2 class="mt-2 text-3xl font-bold text-center">無料ではじめて、必要になったら Pro へ。</h2>
-        <p class="mt-3 text-center text-stone-600">本格運用のための機能拡張は、サブスクリプションで。</p>
-      </div>
-
-      <!-- Launch banner -->
-      <div class="reveal mt-10 rounded-2xl bg-gradient-to-r from-amber-700 to-amber-900 text-white p-6 md:p-8 shadow-md text-center">
-        <p class="text-xs tracking-widest uppercase opacity-90">Launch Campaign</p>
-        <p class="mt-2 text-lg md:text-xl font-bold">ローンチから一定期間、Pro 機能をすべて無料でお試しいただけます。</p>
-        <p class="mt-1 text-sm opacity-90">期間や条件は順次アプリ内・X で告知します。</p>
-      </div>
-
-      <div class="mt-10 grid md:grid-cols-2 gap-6">
-        <article class="reveal rounded-2xl border border-stone-200 p-6 bg-white">
-          <h3 class="font-bold text-xl">BeetLog Free</h3>
-          <p class="mt-1 text-sm text-stone-500">まずは試してみたい方へ</p>
-          <p class="mt-6 text-3xl font-extrabold">¥0<span class="text-sm font-medium text-stone-500"> / 永続</span></p>
-          <ul class="mt-6 space-y-2 text-sm text-stone-700">
-            <li>✓ 個体管理（登録数の上限あり）</li>
-            <li>✓ ペアリング・産卵セット・幼虫ロット</li>
-            <li>✓ 温度管理・飼育タイムライン</li>
-            <li>✓ 譲渡 QR</li>
-          </ul>
-        </article>
-        <article class="reveal rounded-2xl border-2 border-amber-700 p-6 bg-white shadow-md relative">
-          <span class="absolute -top-3 right-4 inline-flex items-center rounded-full bg-amber-700 text-white text-xs font-bold px-3 py-1">Recommended</span>
-          <h3 class="font-bold text-xl text-amber-900">BeetLog Pro</h3>
-          <p class="mt-1 text-sm text-stone-500">本格的にブリードを記録したい方へ</p>
-          <p class="mt-6 text-3xl font-extrabold">価格は<span class="text-sm font-medium text-stone-500"> 順次公開</span></p>
-          <ul class="mt-6 space-y-2 text-sm text-stone-700">
-            <li>✓ Free のすべての機能</li>
-            <li>✓ 個体登録の上限解放</li>
-            <li>✓ 販売札の作成・印刷</li>
-            <li>✓ データ分析・レポート</li>
-            <li>✓ 月額・年額プラン（自動更新）</li>
-          </ul>
-          <p class="mt-4 text-xs text-stone-500">App Store / Google Play での課金になります。解約は購入元のサブスクリプション設定からいつでも可能です。</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- 動作環境 + Coming Soon -->
-  <section id="download" class="bg-white border-b border-stone-200">
-    <div class="max-w-5xl mx-auto px-4 py-20 text-center">
-      <div class="reveal">
-        <p class="text-amber-800 font-semibold text-sm tracking-widest uppercase">Coming Soon</p>
-        <h2 class="mt-2 text-3xl font-bold">App Store / Google Play で<br class="md:hidden"/>順次公開予定</h2>
-        <p class="mt-3 text-stone-600 text-sm">公開のお知らせは X (@beetlog_app) で発信します。</p>
-      </div>
-
-      <div class="reveal mt-10 flex flex-wrap items-center justify-center gap-4">
-        <div class="inline-flex items-center gap-2 rounded-xl border border-stone-300 px-5 py-3 bg-stone-50 text-stone-600">
-          <svg viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.46 2.24-1.21 3.04-.78.83-2.02 1.47-3.06 1.39-.13-1.11.42-2.27 1.16-3.07.79-.86 2.13-1.49 3.11-1.36zM20.5 17.04c-.42 1-.62 1.45-1.16 2.33-.76 1.22-1.83 2.74-3.17 2.75-1.19.01-1.5-.78-3.12-.77-1.62.01-1.96.78-3.15.77-1.34-.01-2.36-1.37-3.12-2.59-2.13-3.41-2.36-7.41-1.04-9.54.93-1.5 2.4-2.38 3.78-2.38 1.41 0 2.29.78 3.45.78 1.13 0 1.82-.78 3.45-.78 1.23 0 2.54.67 3.46 1.83-3.04 1.67-2.55 6.02.62 7.6z"/></svg>
-          <div class="text-left leading-tight">
-            <p class="text-[10px] tracking-widest">Coming soon on</p>
-            <p class="font-bold">App Store</p>
-          </div>
-        </div>
-        <div class="inline-flex items-center gap-2 rounded-xl border border-stone-300 px-5 py-3 bg-stone-50 text-stone-600">
-          <svg viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor" aria-hidden="true"><path d="M3.6 1.5c-.3.2-.5.5-.5 1v19c0 .5.2.8.5 1l11-10.5L3.6 1.5zm12 9.5L17.4 9 5.7 2 14 11l1.6 0zm3.6 1c1 .6 1 2.4 0 3l-2.8 1.6-2-1.8 2-1.8 2.8 0v-1zM5.7 22l11.7-7-2-1.8L14 13 5.7 22z"/></svg>
-          <div class="text-left leading-tight">
-            <p class="text-[10px] tracking-widest">Coming soon on</p>
-            <p class="font-bold">Google Play</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="reveal mt-10 grid md:grid-cols-2 gap-4 max-w-3xl mx-auto text-left">
-        <div class="rounded-xl border border-stone-200 p-5 bg-stone-50">
-          <p class="text-xs tracking-widest text-stone-500 uppercase">iOS</p>
-          <p class="mt-1 font-bold">iOS 16 以上</p>
-        </div>
-        <div class="rounded-xl border border-stone-200 p-5 bg-stone-50">
-          <p class="text-xs tracking-widest text-stone-500 uppercase">Android</p>
-          <p class="mt-1 font-bold">Android 10 以上</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="bg-stone-50">
-    <div class="max-w-3xl mx-auto px-4 py-20">
-      <div class="reveal">
-        <p class="text-center text-amber-800 font-semibold text-sm tracking-widest uppercase">FAQ</p>
-        <h2 class="mt-2 text-3xl font-bold text-center">よくあるご質問</h2>
-      </div>
-
-      <div class="mt-10 space-y-3">
-        <details class="reveal group rounded-2xl border border-stone-200 bg-white p-5 open:shadow-md transition">
-          <summary class="flex items-center justify-between cursor-pointer list-none">
-            <span class="font-bold">いつから使えますか？</span>
-            <span class="ml-4 text-amber-700 group-open:rotate-45 transition">＋</span>
-          </summary>
-          <p class="mt-3 text-sm text-stone-700 leading-relaxed">App Store / Google Play で順次公開予定です。公開のお知らせは X (<a href="https://x.com/beetlog_app" class="text-amber-800 underline" target="_blank" rel="noopener">@beetlog_app</a>) で発信しますので、ぜひフォローしてください。</p>
-        </details>
-        <details class="reveal group rounded-2xl border border-stone-200 bg-white p-5 open:shadow-md transition">
-          <summary class="flex items-center justify-between cursor-pointer list-none">
-            <span class="font-bold">無料で使えますか？</span>
-            <span class="ml-4 text-amber-700 group-open:rotate-45 transition">＋</span>
-          </summary>
-          <p class="mt-3 text-sm text-stone-700 leading-relaxed">Free プランは無料でずっとお使いいただけます。より本格的に運用したい方向けに、Pro プラン（月額・年額のサブスクリプション）を用意します。さらに、ローンチから一定期間は Pro 機能を含めて全機能を無料でお試しいただける予定です。</p>
-        </details>
-        <details class="reveal group rounded-2xl border border-stone-200 bg-white p-5 open:shadow-md transition">
-          <summary class="flex items-center justify-between cursor-pointer list-none">
-            <span class="font-bold">データはどこに保存されますか？</span>
-            <span class="ml-4 text-amber-700 group-open:rotate-45 transition">＋</span>
-          </summary>
-          <p class="mt-3 text-sm text-stone-700 leading-relaxed">飼育データはクラウド (Google Cloud / Firebase) に安全に保存されます。詳しくは<a href="/privacy.html" class="text-amber-800 underline">プライバシーポリシー</a>をご確認ください。</p>
-        </details>
-        <details class="reveal group rounded-2xl border border-stone-200 bg-white p-5 open:shadow-md transition">
-          <summary class="flex items-center justify-between cursor-pointer list-none">
-            <span class="font-bold">機種変更時にデータは引き継げますか？</span>
-            <span class="ml-4 text-amber-700 group-open:rotate-45 transition">＋</span>
-          </summary>
-          <p class="mt-3 text-sm text-stone-700 leading-relaxed">アカウントでログインすることで、新しい端末でも同じデータをそのままご利用いただけます。アカウントを作らずに利用（ゲストモード）した場合は端末内のみの保存となるためご注意ください。</p>
-        </details>
-        <details class="reveal group rounded-2xl border border-stone-200 bg-white p-5 open:shadow-md transition">
-          <summary class="flex items-center justify-between cursor-pointer list-none">
-            <span class="font-bold">譲渡QR とは何ですか？</span>
-            <span class="ml-4 text-amber-700 group-open:rotate-45 transition">＋</span>
-          </summary>
-          <p class="mt-3 text-sm text-stone-700 leading-relaxed">個体情報（種・血統・産地・累代など）を QR コードで他のユーザーへ引き継げる機能です。譲渡や販売のたびに血統情報が途切れず、ブリーダー同士でデータをスムーズに共有できます。</p>
-        </details>
-        <details class="reveal group rounded-2xl border border-stone-200 bg-white p-5 open:shadow-md transition">
-          <summary class="flex items-center justify-between cursor-pointer list-none">
-            <span class="font-bold">解約はどうやってできますか？</span>
-            <span class="ml-4 text-amber-700 group-open:rotate-45 transition">＋</span>
-          </summary>
-          <p class="mt-3 text-sm text-stone-700 leading-relaxed">iOS は「設定」→「Apple ID」→「サブスクリプション」、Android は「Google Play ストア」→「アカウント」→「定期購入」からいつでも解約できます。詳しくは<a href="/tokushoho.html" class="text-amber-800 underline">特定商取引法に基づく表記</a>をご覧ください。</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-stone-900 text-stone-300">
-    <div class="max-w-6xl mx-auto px-4 py-12 grid md:grid-cols-3 gap-8 text-sm">
-      <div>
-        <div class="flex items-center gap-2">
-          <span class="font-bold text-white text-lg">BeetLog</span>
-        </div>
-        <p class="mt-3 text-stone-400">
-          カブト・クワガタのための飼育記録アプリ。<br />
-          Breeders Innovation が運営しています。
-        </p>
-        <div class="mt-4 flex items-center gap-3">
-          <a href="https://x.com/beetlog_app" target="_blank" rel="noopener" aria-label="X (Twitter) @beetlog_app" class="inline-flex items-center justify-center w-9 h-9 rounded-full border border-stone-700 hover:bg-stone-800 transition">
-            <svg viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor" aria-hidden="true">
-              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-      <div>
-        <h4 class="font-semibold text-white">プロダクト</h4>
-        <ul class="mt-3 space-y-2">
-          <li><a href="#why" class="hover:text-white">特徴</a></li>
-          <li><a href="#features" class="hover:text-white">機能</a></li>
-          <li><a href="#how" class="hover:text-white">使い方</a></li>
-          <li><a href="#pricing" class="hover:text-white">料金</a></li>
-          <li><a href="#faq" class="hover:text-white">FAQ</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="font-semibold text-white">運営</h4>
-        <ul class="mt-3 space-y-2">
-          <li><a href="/privacy.html" class="hover:text-white">プライバシーポリシー</a></li>
-          <li><a href="/terms.html" class="hover:text-white">利用規約</a></li>
-          <li><a href="/tokushoho.html" class="hover:text-white">特定商取引法に基づく表記</a></li>
-          <li><a href="/support.html" class="hover:text-white">サポート / お問い合わせ</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="border-t border-stone-800">
-      <div class="max-w-6xl mx-auto px-4 py-6 text-xs text-stone-500 flex flex-wrap justify-between gap-2">
-        <span>© <span id="year"></span> Breeders Innovation. All rights reserved.</span>
-        <span>BeetLog™</span>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    // スクロールで .reveal をふわっと表示
-    const io = new IntersectionObserver((entries) => {
-      for (const e of entries) {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          io.unobserve(e.target);
-        }
-      }
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  </script>
 </body>
 </html>
