@@ -541,58 +541,35 @@ ul,ol{margin:0;padding:0;list-style:none}
   margin-top:6px;
 }
 
-/* printed QR management label */
+/* printed QR management label (matches in-app print preview) */
 .qr-tag{
   position:absolute;
   left:14px; top:118px;
-  width:288px;
-  background:#FCFAF4;
-  border:1px solid rgba(43,26,15,.12);
-  border-radius:18px;
-  padding:16px 18px 14px;
+  width:314px;
+  background:#FFFFFF;
+  border:2px solid #241505;
+  border-radius:5px;
+  padding:13px 15px 12px;
   transform:rotate(-3deg);
   box-shadow:
-    0 1px 0 rgba(255,255,255,.8) inset,
     0 32px 54px -26px rgba(43,26,15,.34),
     0 10px 22px -12px rgba(43,26,15,.20);
   z-index:3;
 }
-.qr-tag-top{
-  display:flex; align-items:center; justify-content:space-between; gap:10px;
-  padding-bottom:12px; margin-bottom:14px;
-  border-bottom:1px dashed rgba(43,26,15,.20);
-}
-.qr-tag-brand{font-family:var(--f-brand); font-size:16px; font-weight:600; color:var(--ink)}
-.qr-tag-kind{
-  font-family:var(--f-num);
-  font-size:10px; letter-spacing:.06em; white-space:nowrap;
-  color:var(--terra-deep); background:var(--terra-soft);
-  padding:3px 9px; border-radius:999px;
-}
-.qr-tag-main{display:flex; gap:16px; align-items:center}
+.qr-tag-head{margin-bottom:9px}
+.qt-sp{font-size:14.5px; font-weight:700; color:#1C120A; line-height:1.25; letter-spacing:.01em}
+.qt-sci{font-family:var(--f-num); font-style:italic; font-size:9.5px; color:rgba(43,26,15,.55); margin-top:2px; letter-spacing:.02em}
+.qr-tag-main{display:flex; gap:14px; align-items:flex-start}
+.qt-rows{flex:1; min-width:0; margin:0; display:flex; flex-direction:column; gap:4px}
+.qt-row{display:flex; gap:8px; align-items:baseline}
+.qt-row dt{flex:0 0 52px; font-size:9px; color:rgba(43,26,15,.55); letter-spacing:.02em; white-space:nowrap}
+.qt-row dd{margin:0; font-size:11px; font-weight:600; color:#1C120A; letter-spacing:.01em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
 .qr-tag-qr{
-  width:94px; height:94px; flex:0 0 94px;
-  border:1px solid rgba(43,26,15,.08);
-  border-radius:8px; overflow:hidden; background:#fff;
+  width:86px; height:86px; flex:0 0 86px;
+  overflow:hidden; background:#fff;
 }
 .qr-tag-qr svg{width:100%; height:100%; display:block; image-rendering:pixelated}
-.qr-tag-info{display:flex; flex-direction:column; gap:5px; min-width:0}
-.qt-id{font-family:var(--f-num); font-size:21px; font-weight:600; letter-spacing:.04em; color:var(--ink); line-height:1}
-.qt-sp{font-size:13px; font-weight:700; color:var(--ink); line-height:1.35}
-.qt-line{font-family:var(--f-num); font-size:11px; color:var(--ink-3); letter-spacing:.02em}
-.qr-tag-foot{
-  display:flex; align-items:center; gap:8px;
-  margin-top:14px; padding-top:12px;
-  border-top:1px dashed rgba(43,26,15,.20);
-  font-size:11.5px; color:var(--ink-2);
-}
-.qr-tag-foot::before{
-  content:""; width:8px; height:8px; border-radius:50%;
-  background:var(--terra);
-  box-shadow:0 0 0 3px rgba(46,125,110,.18);
-}
-body.is-dark .qr-tag{background:var(--bg-2); border-color:var(--line)}
-body.is-dark .qr-tag-brand{color:var(--ink)}
+body.is-dark .qr-tag{background:#FFFFFF; border-color:#241505}
 
 /* scan beam */
 .scan-arc{
@@ -1713,6 +1690,14 @@ body.is-dark .pl-dash{color:rgba(250,250,249,.3)}
 }
 .footer-col ul{display:flex; flex-direction:column; gap:10px; font-size:13.5px}
 .footer-col a:hover{color:#fff}
+.footer-legal{
+  margin-top:34px;
+  margin-bottom:-8px;
+  font-size:10.5px;
+  color:rgba(255,255,255,.35);
+  letter-spacing:.03em;
+  line-height:1.6;
+}
 .footer-base{
   border-top:1px solid rgba(255,255,255,.1);
   padding-top:24px;
