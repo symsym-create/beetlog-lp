@@ -3,12 +3,95 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>BeetLog — カブト・クワガタのための飼育記録アプリ</title>
-<meta name="description" content="BeetLogは、カブトムシ・クワガタムシのブリーダーのための飼育記録・販売管理アプリです。個体管理、産卵セット、幼虫ロット、温度管理、譲渡QR、販売札まで。" />
+<title>カブトムシ・クワガタの飼育記録・飼育管理アプリ | BeetLog（ビートログ）</title>
+<meta name="description" content="カブトムシ・クワガタの飼育記録・飼育管理はBeetLog（ビートログ）。個体・血統（累代）管理、産卵セット、幼虫ロット、温度記録から、管理ラベル印刷・販売札・譲渡QRまでスマホひとつで完結する、ブリーダーのための無料アプリです。" />
+<link rel="canonical" href="https://beetlog.app/" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="BeetLog" />
+<meta property="og:locale" content="ja_JP" />
+<meta property="og:title" content="BeetLog — カブトムシ・クワガタの飼育記録・飼育管理アプリ" />
+<meta property="og:description" content="個体・血統管理、産卵セット、幼虫ロット、温度記録から販売札・譲渡QRまで。ブリーダーのための飼育記録アプリ。" />
+<meta property="og:url" content="https://beetlog.app/" />
+<meta property="og:image" content="https://beetlog.app/assets/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@beetlog_app" />
+<meta name="twitter:image" content="https://beetlog.app/assets/og.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700;900&family=Shippori+Mincho+B1:wght@600;700&family=Lora:wght@500;600;700&family=Inter+Tight:wght@500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="style.css" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MobileApplication",
+      "name": "BeetLog",
+      "alternateName": "ビートログ",
+      "url": "https://beetlog.app/",
+      "image": "https://beetlog.app/assets/og.png",
+      "description": "カブトムシ・クワガタの飼育記録・飼育管理アプリ。個体・血統（累代）管理、産卵セット、幼虫ロット、温度記録、管理ラベル、販売札、譲渡QRに対応。",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "iOS 16 以上 / Android 10 以上",
+      "inLanguage": "ja",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+      "author": {
+        "@type": "Organization",
+        "name": "Breeders Innovation",
+        "url": "https://beetlog.app/",
+        "sameAs": ["https://x.com/beetlog_app"]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "name": "BeetLog",
+      "alternateName": "ビートログ",
+      "url": "https://beetlog.app/",
+      "inLanguage": "ja"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "いつから使えますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "App Store / Google Play で順次公開予定です。公開のお知らせは X (@beetlog_app) で発信します。" }
+        },
+        {
+          "@type": "Question",
+          "name": "無料で使えますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "はい。個体管理・産卵セット・幼虫ロット・温度管理・タスク・譲渡QRなど、日々の飼育記録と管理は無料プランですべてお使いいただけます。Premiumでは出力系機能の回数制限解放、履歴写真のクラウド保存、広告なしなどが加わります。" }
+        },
+        {
+          "@type": "Question",
+          "name": "データはどこに保存されますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "飼育データはクラウド（Google Cloud / Firebase）に安全に保存されます。" }
+        },
+        {
+          "@type": "Question",
+          "name": "機種変更時にデータは引き継げますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "アカウントでログインすることで、新しい端末でも同じデータをそのままご利用いただけます。" }
+        },
+        {
+          "@type": "Question",
+          "name": "譲渡QRとは何ですか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "個体情報（種・血統・産地・累代など）をQRコードで他のユーザーへ引き継げる機能です。譲渡や販売のたびに血統情報が途切れず、ブリーダー同士でデータをスムーズに共有できます。" }
+        },
+        {
+          "@type": "Question",
+          "name": "解約はどうやってできますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "iOSは「設定」→「Apple ID」→「サブスクリプション」、Androidは「Google Play ストア」→「アカウント」→「定期購入」からいつでも解約できます。" }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -746,7 +829,7 @@
         <img class="brand-mark brand-mark--img" src="assets/app-icon.png" alt="" width="36" height="36" />
         <span class="brand-name">BeetLog</span>
       </a>
-      <p>カブト・クワガタのための飼育記録アプリ。<br/>Breeders Innovation が運営しています。</p>
+      <p>カブトムシ・クワガタの飼育記録・飼育管理アプリ。<br/>Breeders Innovation が運営しています。</p>
       <a class="footer-x" href="https://x.com/beetlog_app" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M18.244 2H21l-6.52 7.45L22.5 22H16l-4.95-6.475L5.3 22H2.5l7-8L1.5 2h6.65l4.5 5.94L18.244 2Zm-1.14 18h1.65L7.05 4H5.3l11.804 16Z"/></svg>
         @beetlog_app
