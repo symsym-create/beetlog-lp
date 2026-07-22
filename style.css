@@ -1610,6 +1610,8 @@ body.is-dark .pl-dash{color:rgba(250,250,249,.3)}
   white-space:nowrap;
 }
 .badge-v{font-family:var(--f-num); font-size:18px; font-weight:600; white-space:nowrap}
+a.badge{transition:transform .18s ease, background .18s ease}
+a.badge:hover{transform:translateY(-2px); background:#0c0a09}
 .badge--meta{
   background:transparent; color:var(--ink);
   border:1px solid var(--line);
