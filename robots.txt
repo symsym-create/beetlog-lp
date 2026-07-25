@@ -1,4 +1,30 @@
 User-agent: *
 Allow: /
 
+# AI検索・AIアシスタントのクローラーを明示的に許可します。
+# （上記の "User-agent: *" ですでに許可されていますが、意図を明確にするために記載）
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
 Sitemap: https://beetlog.app/sitemap.xml
