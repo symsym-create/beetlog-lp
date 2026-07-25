@@ -43,7 +43,57 @@
         "https://play.google.com/store/apps/details?id=app.beetlog"
       ],
       "inLanguage": "ja",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+      "featureList": [
+        "個体管理（種・亜種・血統・産地・累代・性別・状態の記録）",
+        "写真記録（代表写真と飼育中の履歴写真の保存）",
+        "血統樹（累代ツリー）による血統の可視化",
+        "ペアリング管理（ハンドペア・同居の履歴）",
+        "産卵セット管理（産卵数・割り出し予定）",
+        "幼虫ロット管理（卵・幼虫・蛹・成虫のステージ別管理）",
+        "温度管理（飼育場所ごとの温度記録）",
+        "通知・リマインド（ゼリー交換や割り出しなどの飼育イベント）",
+        "管理ラベル印刷（QR付きラベル・A4シール・サーマルプリンタ対応）",
+        "レポート出力（PDF / CSV）",
+        "販売札・出品テンプレートの作成",
+        "譲渡QR（個体情報を暗号化したQRと8桁の引換コードで受け渡し）"
+      ],
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Free",
+          "price": "0",
+          "priceCurrency": "JPY",
+          "description": "個体管理・ペアリング・産卵セット・幼虫ロット・温度管理・タスク・譲渡QRなど、日々の飼育記録と管理を無料で利用できます。出力系5機能は合計月5回まで、飼育マニュアルは3つまで。"
+        },
+        {
+          "@type": "Offer",
+          "name": "Premium（月額プラン）",
+          "price": "480",
+          "priceCurrency": "JPY",
+          "description": "出力系5機能が無制限、飼育マニュアル無制限、履歴写真のクラウド保存・復元、飼育終了後も履歴を閲覧可能、譲渡時に写真も引き継ぎ、広告非表示。",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "480",
+            "priceCurrency": "JPY",
+            "billingDuration": 1,
+            "unitCode": "MON"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Premium（年額プラン）",
+          "price": "4800",
+          "priceCurrency": "JPY",
+          "description": "月額プランと同じPremium機能を年額でご利用いただけます（2ヶ月分おトク）。",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "4800",
+            "priceCurrency": "JPY",
+            "billingDuration": 1,
+            "unitCode": "ANN"
+          }
+        }
+      ],
       "author": {
         "@type": "Organization",
         "name": "Breeders Innovation",
@@ -56,7 +106,25 @@
       "name": "BeetLog",
       "alternateName": "ビートログ",
       "url": "https://beetlog.app/",
-      "inLanguage": "ja"
+      "inLanguage": "ja",
+      "publisher": { "@id": "https://beetlog.app/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://beetlog.app/#organization",
+      "name": "Breeders Innovation",
+      "url": "https://beetlog.app/",
+      "logo": "https://beetlog.app/assets/app-icon.png",
+      "sameAs": ["https://x.com/beetlog_app"]
+    },
+    {
+      "@type": "WebPage",
+      "url": "https://beetlog.app/",
+      "name": "BeetLog（ビートログ）— カブトムシ・クワガタの飼育記録・飼育管理アプリ",
+      "description": "BeetLogは、カブトムシ・クワガタのブリーダー向けの飼育記録・飼育管理アプリです。個体・血統（累代）管理、産卵セット、幼虫ロット、温度記録に加え、QR付き管理ラベルの印刷、販売札・出品テンプレートの作成、譲渡QRによる個体情報の受け渡しに対応。iOS 16以上 / Android 10以上で、無料プランから利用できます。",
+      "inLanguage": "ja",
+      "dateModified": "2026-07-25",
+      "isPartOf": { "@id": "https://beetlog.app/#organization" }
     },
     {
       "@type": "FAQPage",
